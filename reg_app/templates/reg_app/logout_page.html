@@ -1,0 +1,42 @@
+{% extends 'reg_app/base.html' %}
+
+{% block title %}LogIn{% endblock %}
+
+{% block content %}
+	<nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
+	  <div class="container-fluid">
+	    <a class="navbar-brand" href="{% url 'reg_app:home' %}">Django Registration</a>
+	    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+	      <span class="navbar-toggler-icon"></span>
+	    </button>
+	    
+	   	<div class="d-flex navbar-nav" id="navbarNavAltMarkup">
+	   		<a class="nav-link" href="{% url 'reg_app:home' %}">Home</a>
+	        <a class="nav-link" href="{% url 'reg_app:profile' %}">Profile</a>
+	        <a class="nav-link active" href="{% url 'reg_app:login' %}">LogIn</a>
+	        <a class="nav-link" href="{% url 'reg_app:signup' %}">SignUp</a>
+
+    	</div>
+	  </div>
+	</nav>
+
+
+
+
+	<div class="container" style="padding-top: 60px">
+		<h1>Logged Out</h1>
+		<p>Django Registration | LoggedOut</p>
+		<hr>
+	</div>
+
+	<div class="container">
+		{% if  messages %}
+		{% for message in messages %}
+			<div class="alert alert-{{message.tags}}">{{message}}</div>
+		{% endfor %}
+		{% endif %}
+	</div>
+
+
+	</div>
+{% endblock %}

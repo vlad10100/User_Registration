@@ -1,0 +1,48 @@
+{% extends 'reg_app/base.html' %}
+
+{% block title %}SignUp{% endblock %}
+{% load crispy_forms_tags %}
+{% block content %}
+<nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
+	  <div class="container-fluid">
+	    <a class="navbar-brand" href="{% url 'reg_app:home' %}">Django Registration</a>
+	    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+	      <span class="navbar-toggler-icon"></span>
+	    </button>
+	    
+	   	<div class="d-flex navbar-nav" id="navbarNavAltMarkup">
+	   		<a class="nav-link" href="{% url 'reg_app:home' %}">Home</a>
+	        <a class="nav-link" href="{% url 'reg_app:profile' %}">Profile</a>
+	        <a class="nav-link" href="{% url 'reg_app:login' %}">LogIn</a>
+	        <a class="nav-link active" href="{% url 'reg_app:signup' %}">SignUp</a>
+
+    	</div>
+	  </div>
+	</nav>
+
+
+
+	<div class="container" style="padding-top: 60px">
+		<h1>SignUp</h1>
+		<p>Django Registration | SignUp</p>
+		<hr>
+	</div>
+	<div class="container" style="width: 600px; border:solid gray; border-radius: 20px;">
+		<form method="POST">
+			{% csrf_token %}
+			{{form.username|as_crispy_field}}
+			{{form.email|as_crispy_field}}
+			<div class="row">
+				<div class="col-lg-6">
+					{{form.password1|as_crispy_field}}
+				</div>
+				<div class="col-lg-6">
+					{{form.password2|as_crispy_field}}
+				</div>
+			</div>
+			
+			<input class="btn btn-dark" type="submit" value="SignUp" name="submit">
+			<p><a href="{% url 'reg_app:login' %}">Already have an account?</a></p>
+		</form>
+	</div>
+{% endblock %}

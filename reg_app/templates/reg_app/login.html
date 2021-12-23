@@ -1,0 +1,80 @@
+{% extends 'reg_app/base.html' %}
+
+{% block title %}LogIn{% endblock %}
+
+{% block content %}
+	<nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
+	  <div class="container-fluid">
+	    <a class="navbar-brand" href="{% url 'reg_app:home' %}">Django Registration</a>
+	    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+	      <span class="navbar-toggler-icon"></span>
+	    </button>
+	    
+	   	<div class="d-flex navbar-nav" id="navbarNavAltMarkup">
+	   		<a class="nav-link" href="{% url 'reg_app:home' %}">Home</a>
+	        <a class="nav-link" href="{% url 'reg_app:profile' %}">Profile</a>
+	        <a class="nav-link active" href="{% url 'reg_app:login' %}">LogIn</a>
+	        <a class="nav-link" href="{% url 'reg_app:signup' %}">SignUp</a>
+
+    	</div>
+	  </div>
+	</nav>
+
+
+
+
+	<div class="container" style="padding-top: 60px">
+		<h1>LogIn</h1>
+		<p>Django Registration | LogIn</p>
+		<hr>
+	</div>
+
+	<div class="container">
+		{% if  messages %}
+		{% for message in messages %}
+			<div class="alert alert-{{message.tags}}">{{message}}</div>
+		{% endfor %}
+		{% endif %}
+	</div>
+
+	<div class="container">
+		<form method="POST">
+			{% csrf_token %}
+			<div class="container" style="padding-top:50px;">
+				<table>
+					<tr>
+						<div class="row g-3 align-items-center">
+							<td>
+								<div class="col-auto">
+							    	<label for="username" class="col-form-label">Username:</label>
+								</div>
+							</td>
+							<td>
+								<div class="col-auto">
+							    	<input type="username" id="username" name="username" class="form-control">
+								</div>
+							</td>
+						</div>
+					</tr>
+					<tr>
+						<div class="row g-3 align-items-center">
+							<td>
+								<div class="col-auto">
+							    	<label for="password" class="col-form-label">Password: </label>
+								</div>
+							</td>
+							<td>
+								<div class="col-auto">
+							    	<input type="password" id="password" name="password" class="form-control">
+								</div>
+							</td>
+						</div>
+					</tr>
+				</table>
+			
+			<input class="btn btn-dark" type="submit" value="LogIn" name="submit">
+			<p><a href="{% url 'reg_app:signup' %}">Don't have an account?</a></p>
+		</form>
+		</div>
+	</div>
+{% endblock %}
